@@ -127,9 +127,7 @@ const EmployeeList = () => {
   ]);
 
   const [employeeID, setEmployeeID] = useState("");
-  {
-    console.log(employeeID);
-  }
+
   return (
     <div>
       <div className="row">
@@ -145,7 +143,7 @@ const EmployeeList = () => {
                   <div className="col">
                     <div
                       onClick={() => {
-                        setEmployeeID(`${employee.id}`);
+                        setEmployeeID(employee.id);
                       }}
                     >
                       {employee.firstName} {employee.lastName}{" "}
