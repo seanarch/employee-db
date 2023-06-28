@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { GrClose } from "react-icons/gr";
+import EmployeeDetail from "./EmployeeDetail";
 
 const EmployeeList = () => {
-  const [employee, setemployee] = useState([
+  const [employees, setEmployees] = useState([
     {
       id: 1001,
       imageUrl: "https://hub.dummyapis.com/Image?text=MR&height=120&width=120",
@@ -124,11 +126,49 @@ const EmployeeList = () => {
     },
   ]);
 
+  const [employeeID, setEmployeeID] = useState("");
+  {
+    console.log(employeeID);
+  }
   return (
     <div>
       <div className="row">
         <div className="col">Empolyee List</div>
         <div className="col">Employee Information</div>
+      </div>
+      <div className="container">
+        <div className="row">
+          <div className="col-5">
+            {employees.map((employee) => {
+              return (
+                <div key={employee.id} className="row">
+                  <div className="col">
+                    <div
+                      onClick={() => {
+                        setEmployeeID(`${employee.id}`);
+                      }}
+                    >
+                      {employee.firstName} {employee.lastName}{" "}
+                    </div>
+                  </div>
+                  <div className="col">
+                    <GrClose
+                      onClick={() => {
+                        console.log("Close", `${employee.id}`);
+                      }}
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="col-7">
+            {employeeID && (
+              <EmployeeDetail employees={employees} id={employeeID} />
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
