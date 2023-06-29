@@ -146,13 +146,16 @@ const EmployeeList = () => {
                         setEmployeeID(employee.id);
                       }}
                     >
-                      {employee.firstName} {employee.lastName}{" "}
+                      {employee.firstName} {employee.lastName}
                     </div>
                   </div>
                   <div className="col">
                     <GrClose
                       onClick={() => {
-                        console.log("Close", `${employee.id}`);
+                        let empid = employee.id;
+                        setEmployees(
+                          employees.filter((employee) => employee.id !== empid)
+                        );
                       }}
                     />
                   </div>
