@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { GrClose } from "react-icons/gr";
 import EmployeeDetail from "./EmployeeDetail";
 
